@@ -175,10 +175,11 @@ TensorFlow Documentation
 OpenCV Documentation
 
 👨‍💻 Author
-Eppala Sai Nanda Gopal
-Diploma in Computer Science (2022–2025)
-Teegala Krishna Reddy Engineering College, Hyderabad
-Under guidance of Mr. Mohammad Nehal
+## 👨‍💻 Author
+
+**Your Name**  
+Student, Computer Science  
+GitHub: [@Asritha11111](https://github.com/Asritha11111)
 
 📄 License
 This project is licensed under the MIT License – see the LICENSE file for details.
