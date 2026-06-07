@@ -1,188 +1,155 @@
-# 🎭 Deepfake Recognition System
+# 🔍 DEEPFAKE DETECTION SYSTEM
 
-[![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://python.org)
-[![TensorFlow](https://img.shields.io/badge/TensorFlow-2.13-orange.svg)](https://tensorflow.org)
-[![React](https://img.shields.io/badge/React-18.2-blue.svg)](https://reactjs.org)
-[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+![Python](https://img.shields.io/badge/Python-3.10-blue.svg)
+![TensorFlow](https://img.shields.io/badge/TensorFlow-2.13-orange.svg)
+![Node.js](https://img.shields.io/badge/Node.js-18+-green.svg)
+![License](https://img.shields.io/badge/License-MIT-yellow.svg)
 
-> **Detect AI‑generated fake videos and images with an intuitive web interface**
-
-A complete end‑to‑end deepfake detection system that uses the **MesoNet** convolutional neural network to identify manipulated facial media. The system provides a user‑friendly web interface, real‑time predictions, and model training capabilities – all optimised to run on standard CPUs.
-
-![System Architecture](docs/architecture.png) <!-- Add your actual screenshot later -->
-
----
+A complete web‑based deepfake detection system that analyzes **images**, **videos**, and **audio** for manipulation. Built with a custom **MesoNet** CNN model and a modern React‑like frontend (HTML/CSS/JS + Tailwind).
 
 ## ✨ Features
 
-- 🧠 **Deep Learning Detection** – MesoNet CNN trained to spot facial manipulations
-- 🌐 **Web‑based UI** – Built with React + Chakra UI, drag‑and‑drop uploads
-- ⚡ **CPU Optimised** – No GPU required; runs efficiently on standard hardware
-- 📸 **Image & Video Support** – Analyse single images or frame‑by‑frame video
-- 📊 **Confidence Scores** – Percentage probability of real vs. fake
-- 🏋️ **Train Your Own Model** – Use custom datasets for fine‑tuning
-- 📈 **Real‑time Progress** – Training and prediction feedback with live metrics
+- 🔐 **User Authentication** – Register, login, JWT‑protected routes.
+- 🖼️ **Image Detection** – Upload images, get REAL/FAKE verdict with confidence score.
+- 🎥 **Video Detection** – Extracts frames, analyzes each frame, and shows per‑frame results.
+- 🎤 **Audio Detection** – Uses Mel‑spectrogram CNN for voice deepfake detection.
+- 📊 **Analytics Dashboard** – Charts showing your detection history (real vs fake).
+- 📜 **History Panel** – Store and filter past detections (per user, localStorage).
+- 👤 **User Profile** – Edit name, view stats, recent activity.
+- 🌓 **Dark/Light Mode** – Toggle between themes.
+- 🌐 **Multi‑language** – English, Spanish, Hindi, French.
+- 📄 **PDF Report** – Download detailed analysis report.
+- 📸 **Webcam Capture** – Real‑time capture and detection.
 
----
+## 🧠 Model Architecture
 
-## 🧠 How It Works
+- **MesoNet** – A compact Convolutional Neural Network (CNN) optimized for detecting facial manipulations.
+- **Input**: 64×64 grayscale face crops.
+- **Accuracy**: ~95% on the Celeb‑DF dataset (trained on your own dataset).
 
-1. **Upload** an image or video through the web interface
-2. **Preprocessing** – Faces are detected, aligned, resized to 64×64 grayscale
-3. **MesoNet Model** – A compact CNN extracts hierarchical features
-4. **Prediction** – Outputs a score:
-   - `> 0.5` → **REAL**
-   - `≤ 0.5` → **DEEPFAKE**
-5. **Result** – Shown with confidence percentage and visual indicators
-
-![Detection Pipeline](docs/pipeline.png) <!-- Add diagram later -->
-
----
+For audio, a separate CNN processes Mel‑spectrograms of 3‑second audio clips.
 
 ## 🛠️ Tech Stack
 
-| Layer          | Technologies                                                                 |
-|----------------|------------------------------------------------------------------------------|
-| **Frontend**   | React 18, Chakra UI, Vite, Axios                                            |
-| **Backend**    | Node.js, Express, Multer, Python‑Shell                                      |
-| **ML Engine**  | Python 3.8+, TensorFlow (CPU), OpenCV, NumPy, scikit‑learn                  |
-| **Model**      | MesoNet (custom CNN with 3 conv blocks + dense layers)                      |
-| **Deployment** | Local server (easily containerised with Docker)                             |
+### Frontend
+- HTML5, CSS3, JavaScript (ES6)
+- Tailwind CSS (for landing page)
+- Chart.js (analytics)
+- html2pdf.js (report generation)
 
----
+### Backend
+- **Node.js** + **Express.js** – REST API, file uploads, JWT auth.
+- **Multer** – File handling.
+- **Python** (TensorFlow, OpenCV, Librosa) – Deepfake model inference.
+- **ffmpeg** – Video frame extraction.
 
-``` ## 📁 Project Structure
+### Database
+- `users.json` – Simple file‑based user storage.
+- `localStorage` – Per‑user history.
+
+## 📁 Project Structure
+```
 deepfake-detection/
-├── model/
-│ └── mesonet.py # MesoNet neural network architecture
-├── scripts/ # Utility scripts (organise, process, etc.)
-├── src/
-│ ├── components/ # React UI components
-│ ├── App.jsx # Main React app
-│ └── main.jsx # Entry point
-├── utils/
-│ ├── data_loader.py # Dataset loading utilities
-│ ├── logger.py # Logging helper
-│ └── video_to_frames.py # Frame extraction
-├── dataset/ # Training data (real/ and fake/ subfolders)
-├── saved_model/ # Trained model (.h5 file)
-├── uploads/ # Temporary file storage
+├── public/
+│ └── index.html # Frontend (all-in-one)
+├── saved_model/
+│ ├── mesonet_model.h5 # Image/video model
+│ └── audio_model.h5 # Audio model (optional)
+├── dataset/
+│ ├── real/ # Training images (real faces)
+│ └── fake/ # Training images (deepfakes)
+├── uploads/ # Temporary uploads
 ├── server.js # Express backend
-├── train.py # Model training script
-├── predict.py # Prediction script
-├── package.json # Node dependencies
+├── predict.py # Image prediction script
+├── predict_audio.py # Audio prediction script
+├── train_simple_working.py # Image model training
+├── train_audio.py # Audio model training
 ├── requirements.txt # Python dependencies
-├── vite.config.js # Vite configuration
-└── index.html # Main HTML entry point
-``` 
-
----
+├── package.json # Node dependencies
+├── users.json # Registered users
+└── README.md # This file
+```
 
 ## 🚀 Getting Started
 
 ### Prerequisites
 
-- **Node.js** (v14+ recommended) – [Download](https://nodejs.org)
-- **Python** (3.8 – 3.10) – [Download](https://python.org)
-- **npm** (comes with Node.js)
-- **pip** (comes with Python)
+- **Node.js** (v18+)
+- **Python** (3.10)
+- **pip** and **npm**
 
 ### Installation
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/your-username/deepfake-detection.git
-   cd deepfake-detection
-Install Node dependencies
+   git clone https://github.com/Asritha11111/DEEPFAKE-DETECTION-SYSTEM-final-.git
+   cd DEEPFAKE-DETECTION-SYSTEM-final-
+2. **Install Node dependencies**
 
+ ```bash
+   npm install  
+ ```
+3. **Install Python dependencies**
+ 
+ ```bash
+   pip install -r requirements.txt
+ ```
+4. **Train the image model (or use a pre‑trained one)**
+
+ ```bash
+   python train_simple_working.py
+ ```
+Make sure you have images in dataset/real/ and dataset/fake/.
+
+5. **Train the audio model (optional – fallback to random)**
+ ```
 bash
-npm install
-Install Python dependencies
+   python train_audio.py
+ ```
+If you skip this, the audio detection will return a random confidence.
 
+6. **Start the server**
+ ```
 bash
-pip install -r requirements.txt
-Prepare dataset (optional for training)
+   node server.js
+ ```
+7. **Open your browser** and go to http://localhost:3000
 
-Put real face images in dataset/real/
+📸 Usage
+1. Register a new account (any email/password).
+2.Log in to access the dashboard.
+3. Upload an image, video (MP4), or audio file.
+4. Click Detect Deepfake (or Analyze Video/Audio).
+5. View the verdict and confidence score.
+6. Check your history and analytics.
+7. Download a PDF report for any image detection.
 
-Put deepfake images in dataset/fake/
+## 🧪 Testing
+- Place some real face images in dataset/real/ and fake (deepfake) images in dataset/fake/.
+- Retrain the model whenever you add new images.
 
-Supported formats: .jpg, .png, .jpeg
+## 🐛 Troubleshooting
 
-Running the Application
-You need two terminals – one for backend, one for frontend.
+| Issue                          | Solution |
+|--------------------------------|----------|
+| Model not loading              | Retrain: `python train_simple_working.py` |
+| Uploaded image always FAKE     | Check that the model was trained with correct labels. |
+| ffmpeg not found               | Install ffmpeg and add to PATH, or use the `ffmpeg-static` package. |
+| Audio detection fails          | The model file may be missing – use the dummy script or train a real model. |
 
-Terminal 1 – Backend
-bash
-node server.js
-Expected output:
+📄 License
+MIT
 
-🚀 Server running on http://localhost:3000
-Terminal 2 – Frontend
-bash
-npm run dev
-Expected output:
-
-text
-VITE ready...
-➜ Local: http://localhost:5173/
-Open your browser at http://localhost:5173 and start detecting!
-
-Training the Model
-Place your training images in dataset/real/ and dataset/fake/
-
-In the web UI, go to Train Model tab
-
-Set number of epochs (e.g., 50) and batch size (e.g., 32)
-
-Click Start Training – progress will be shown in the terminal
-
-The trained model is saved to saved_model/mesonet_model.h5
-
-📊 Results & Performance
-Tested on the Celeb-DF dataset (v2) with 50 epochs:
-
-Metric	Value
-Accuracy	95.23%
-Precision	94.87%
-Recall	95.61%
-F1 Score	95.24%
-Inference time (image)	~1.2 seconds
-Performance may vary depending on CPU and dataset size.
-
-🔮 Future Enhancements
-GPU acceleration (CUDA support for faster training)
-
-Real‑time video stream analysis
-
-Ensemble models (combine MesoNet with Xception / EfficientNet)
-
-Batch processing for multiple files
-
-Docker containerisation for easy deployment
-
-Explainable AI (heatmaps showing manipulated regions)
-
-📚 References
-Afchar et al. – MesoNet: a Compact Facial Video Forgery Detection Network (WIFS 2018)
-
-Rossler et al. – FaceForensics++ (ICCV 2019)
-
-Li et al. – Celeb-DF: A Large-scale Challenging Dataset for DeepFake Forensics (CVPR 2020)
-
-TensorFlow Documentation
-
-OpenCV Documentation
-
-👨‍💻 Author
-## 👨‍💻 Author
+ ## 👩‍💻 Author
 
 **Kotagiri Asritha**  
-Student, Computer Science  
-GitHub: [@Asritha11111](https://github.com/Asritha11111)
+GitHub: [Asritha11111](https://github.com/Asritha11111)  
+Project Repository: [DEEPFAKE-DETECTION-SYSTEM-final-](https://github.com/Asritha11111/DEEPFAKE-DETECTION-SYSTEM-final-)
 
-Open‑source community for TensorFlow, React, Chakra UI, and Express
+## 🙏 Acknowledgements
 
-⚠️ Disclaimer
-This system is intended for research and educational purposes only. It may not be 100% accurate against all deepfake generation methods. Always use critical thinking when evaluating digital media.
+- MesoNet paper by Afchar et al. (2018)
+- Celeb‑DF dataset
+- TensorFlow, OpenCV, Librosa communities
 
+⭐ If you find this project useful, please give it a star! ⭐
