@@ -177,17 +177,9 @@ OpenCV Documentation
 👨‍💻 Author
 ## 👨‍💻 Author
 
-**Your Name**  
+**Kotagiri Asritha**  
 Student, Computer Science  
 GitHub: [@Asritha11111](https://github.com/Asritha11111)
-
-📄 License
-This project is licensed under the MIT License – see the LICENSE file for details.
-
-🙏 Acknowledgements
-Department of Computer Science, TKR College
-
-SBTET Telangana for the academic framework
 
 Open‑source community for TensorFlow, React, Chakra UI, and Express
 
