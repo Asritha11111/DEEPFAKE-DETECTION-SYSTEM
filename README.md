@@ -137,16 +137,16 @@ bash
 | ffmpeg not found               | Install ffmpeg and add to PATH, or use the `ffmpeg-static` package. |
 | Audio detection fails          | The model file may be missing – use the dummy script or train a real model. |
 
-📄 License
+## 📄 License
 MIT
 
  ## 👩‍💻 Author
 
 **Kotagiri Asritha**  
 GitHub: [Asritha11111](https://github.com/Asritha11111)  
-Project Repository: [DEEPFAKE-DETECTION-SYSTEM-final-](https://github.com/Asritha11111/DEEPFAKE-DETECTION-SYSTEM-final-)
+Project Repository: [DEEPFAKE-DETECTION-SYSTEM-final-](https://github.com/Asritha11111/DEEPFAKE-DETECTION-SYSTEM)
 
-## 🙏 Acknowledgements
+## Acknowledgements
 
 - MesoNet paper by Afchar et al. (2018)
 - Celeb‑DF dataset
