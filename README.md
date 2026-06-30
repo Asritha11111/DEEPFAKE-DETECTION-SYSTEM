@@ -82,8 +82,8 @@ deepfake-detection/
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/Asritha11111/DEEPFAKE-DETECTION-SYSTEM-final-.git
-   cd DEEPFAKE-DETECTION-SYSTEM-final-
+   git clone https://github.com/Asritha11111/DEEPFAKE-DETECTION-SYSTEM.git
+   cd DEEPFAKE-DETECTION-SYSTEM
 2. **Install Node dependencies**
 
  ```bash
@@ -144,7 +144,7 @@ MIT
 
 **Kotagiri Asritha**  
 GitHub: [Asritha11111](https://github.com/Asritha11111)  
-Project Repository: [DEEPFAKE-DETECTION-SYSTEM-final-](https://github.com/Asritha11111/DEEPFAKE-DETECTION-SYSTEM)
+Project Repository: [DEEPFAKE-DETECTION-SYSTEM](https://github.com/Asritha11111/DEEPFAKE-DETECTION-SYSTEM)
 
 ## Acknowledgements
 
